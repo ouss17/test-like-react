@@ -9,6 +9,10 @@ function App() {
   const [inputForm, setInputForm] = useState<InputForm>({ choice: "" });
   const [showAnswer, setShowAnswer] = useState<boolean>(false);
 
+  /**
+   * Set value on input change
+   * @param e
+   */
   const handleChangeInput = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const { name, value } = e.target;
     setInputForm({ ...inputForm, [name]: value });
@@ -17,15 +21,14 @@ function App() {
     }
   };
 
+  /**
+   * Reset choice field
+   */
   const emptyValue = () => {
     setInputForm({
       choice: "",
     });
     setShowAnswer(false);
-  };
-
-  const answer = () => {
-    setShowAnswer(true);
   };
 
   return (
@@ -38,11 +41,11 @@ function App() {
               <option value="c" selected disabled>
                 Choose
               </option>
-              <option value="yes" onClick={answer}>
+              <option value="yes" onClick={() => setShowAnswer(true)}>
                 Yes
               </option>
 
-              <option value="no" onClick={answer}>
+              <option value="no" onClick={() => setShowAnswer(true)}>
                 No
               </option>
             </optgroup>
